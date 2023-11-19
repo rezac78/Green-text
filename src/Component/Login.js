@@ -26,9 +26,10 @@ const Login = () => {
       );
 
       const data = await response.json();
-
+      console.log(data)
       if (response.ok) {
         localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("ticket", data.ticket);
         setShowSuccessPopup(true);
         setErrorMessage(JSON.stringify({
             ticket: "YOUR TICKET",
