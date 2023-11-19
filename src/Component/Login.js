@@ -26,28 +26,38 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("isAuthenticated", "true");
-        document.cookie = `ticket=${data.ticket}; path=/;`;
+        document.cookie = `ticket=${data.ticket}; path=/; `;
         setShowSuccessPopup(true);
-        setErrorMessage(JSON.stringify({
-            ticket: "YOUR TICKET",
-            Lname: "Intelligence",
-            name: "Green"
-        }, null, 2))
-        console.log(JSON.stringify({
-            ticket: "YOUR TICKET",
-            Lname: "Intelligence",
-            name: "Green"
-        }, null, 2))
-        setTimeout(() => { window.location.href = "http://localhost:3002/"; }, 4000);
-
+        setErrorMessage("Login success");
+        console.log(
+          JSON.stringify(
+            {
+              ticket: "YOUR TICKET",
+              Lname: "Intelligence",
+              name: "Green",
+            },
+            null,
+            2
+          )
+        );
+        setTimeout(() => {
+          window.location.href = "http://localhost:3002/";
+        }, 4000);
       } else {
-        setErrorMessage(JSON.stringify({
-            timestamp: new Date().toISOString(),
-            status: 400,
-            error: "Bad Request",
-            message: "Invalid Username or Password",
-            path: "/test/users/login"
-        }, null, 2));
+        setErrorMessage("Invalid Username or Password");
+        console.log(
+          JSON.stringify(
+            {
+              timestamp: new Date().toISOString(),
+              status: 400,
+              error: "Bad Request",
+              message: "Invalid Username or Password",
+              path: "/test/users/login",
+            },
+            null,
+            2
+          )
+        );
         setShowErrorPopup(true);
       }
     } catch (error) {
@@ -62,7 +72,7 @@ const Login = () => {
         {/* Success Popup */}
         {showSuccessPopup && (
           <div className="fixed top-0 left-0 right-0 bg-green-500 text-white p-3">
-           {errorMessage}
+            {errorMessage}
           </div>
         )}
 
