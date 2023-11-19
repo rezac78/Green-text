@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -7,7 +6,6 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +39,8 @@ const Login = () => {
             Lname: "Intelligence",
             name: "Green"
         }, null, 2))
-        setTimeout(() => navigate("/home"),4000);
+        setTimeout(() => { window.location.href = "http://localhost:3002/"; }, 4000);
+
       } else {
         setErrorMessage(JSON.stringify({
             timestamp: new Date().toISOString(),
