@@ -16,13 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route
           path="*"
-          element={
-            isAuthenticated ? (
-              <Navigate to="/home" replace />
-            ) : (
-              <Navigate to="/login" replace />
-            )
-          }
+          element={isAuthenticated ? <Navigate to="/login" replace /> : null}
         />
       </Routes>
     </Router>
