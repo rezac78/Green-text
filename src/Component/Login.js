@@ -41,7 +41,7 @@ const Login = () => {
           )
         );
         setTimeout(() => {
-          window.location.href = "http://localhost:3002/";
+          window.location.href = "http://localhost:3001/";
         }, 4000);
       } else {
         setErrorMessage("Invalid Username or Password");
